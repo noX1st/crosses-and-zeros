@@ -1,5 +1,7 @@
 QT       += core gui
 
+QT       += core gui sql
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -10,15 +12,31 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    menu.cpp \
+    sign_in.cpp \
+    sign_up.cpp \
+    sql.cpp \
+    user.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    menu.h \
+    sign_in.h \
+    sign_up.h \
+    sql.h \
+    user.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    menu.ui \
+    sign_in.ui \
+    sign_up.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    img.qrc
