@@ -5,6 +5,7 @@
 #include "sign_up.h"
 #include "sql.h"
 #include "menu.h"
+#include "game.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -42,6 +43,7 @@ private:
     Ui::MainWindow *ui;
     sql* userSql;
 
+    Game game;
     menu mainMenu;
 };
 #endif // MAINWINDOW_H

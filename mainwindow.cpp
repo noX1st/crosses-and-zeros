@@ -29,13 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::changeWindow()
 {
-    sign_in.hide();
     registration.show();
+    sign_in.hide();
 }
 
 void MainWindow::startGame()
 {
-
+    game.show();
+    mainMenu.hide();
 }
 
 void MainWindow::singleGame()
@@ -98,14 +99,18 @@ void MainWindow::signIn()
         return;
     }
     QMessageBox::information(this, "information", "Sign in was successful", QMessageBox::Ok);
-    sign_in.hide();
     mainMenu.show();
+    sign_in.hide();
 }
 
 void MainWindow::signUp()
 {
     if (registration.get_username().isEmpty() || registration.get_email().isEmpty() || registration.get_password().isEmpty() || registration.get_confirm().isEmpty()) {
         QMessageBox::warning(this, "Warning", "Please fill in all fields.", QMessageBox::Ok);
+        return;
+    }
+    if (!registration.get_email().contains('@')) {
+        QMessageBox::warning(this, "Warning", "Please enter a valid email", QMessageBox::Ok);
         return;
     }
     if (registration.get_password() != registration.get_confirm())
@@ -129,9 +134,10 @@ void MainWindow::signUp()
     sql->insertUser(*user);
     QMessageBox MSG(
         QMessageBox::Information, "information", "Sign up was succesfull", QMessageBox::Ok);
+
     MSG.exec();
-    registration.hide();
     sign_in.show();
+    registration.hide();
 }
 
 void MainWindow::display()

@@ -25,6 +25,10 @@ private slots:
 
     void on_signUpBtn_clicked();
 
+    void on_tabWidget_6_currentChanged(int index);
+
+    void on_allowPlugins_2_checkStateChanged(const Qt::CheckState &arg1);
+
 signals:
     void signInBtn_clicked();
 

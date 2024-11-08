@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>591</width>
-    <height>439</height>
+    <width>601</width>
+    <height>460</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -22,8 +22,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>70</y>
+     <x>210</x>
+     <y>60</y>
      <width>191</width>
      <height>320</height>
     </rect>
@@ -214,17 +214,17 @@ background-color: rgb(43, 43, 43);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="errorLbl">
+  <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>400</y>
-     <width>49</width>
-     <height>16</height>
+     <x>80</x>
+     <y>350</y>
+     <width>3</width>
+     <height>61</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
+   <property name="orientation">
+    <enum>Qt::Orientation::Vertical</enum>
    </property>
   </widget>
  </widget>
