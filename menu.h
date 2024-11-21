@@ -28,6 +28,8 @@ private slots:
 
     void on_exitBtn_clicked();
 
+    void on_BackBtn_clicked();
+
 signals:
     void startBtn_clicked();
 

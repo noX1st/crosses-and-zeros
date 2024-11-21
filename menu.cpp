@@ -27,6 +27,7 @@ void menu::on_singleBtn_clicked()
 
 void menu::on_settingsBtn_clicked()
 {
+    ui->stackedWidget->setCurrentIndex(1);
     emit settingsBtn_clicked();
 }
 
@@ -46,5 +47,10 @@ void menu::on_statisticBtn_clicked()
 void menu::on_exitBtn_clicked()
 {
     emit exitBtn_clicked();
+}
+
+void menu::on_BackBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
