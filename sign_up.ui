@@ -251,9 +251,18 @@ color: rgb(0, 0, 0);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(53, 141, 255);
+       <string notr="true">QPushButton{
+background-color: rgb(53, 141, 255);
 color: rgb(0, 0, 0);
-</string>
+}
+
+QPushButton:hover{
+background-color: rgb(73, 155, 255);
+}
+
+QPushButton:pressed{
+background-color: rgb(85, 175, 255);
+}</string>
       </property>
       <property name="text">
        <string>Sign Up</string>

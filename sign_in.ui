@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="contextMenuPolicy">
-   <enum>Qt::NoContextMenu</enum>
+   <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -45,7 +45,7 @@
        <string>Sign in</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -133,10 +133,10 @@ background-color: rgb(255, 255, 255);</string>
     <item>
      <spacer name="verticalSpacer_2">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Orientation::Vertical</enum>
       </property>
       <property name="sizeType">
-       <enum>QSizePolicy::Maximum</enum>
+       <enum>QSizePolicy::Policy::Maximum</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
@@ -155,8 +155,18 @@ background-color: rgb(255, 255, 255);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(53, 141, 255);
-color: rgb(0, 0, 0);</string>
+       <string notr="true">QPushButton{
+background-color: rgb(53, 141, 255);
+color: rgb(0, 0, 0);
+}
+
+QPushButton:hover{
+background-color: rgb(73, 155, 255);
+}
+
+QPushButton:pressed{
+background-color: rgb(85, 175, 255);
+}</string>
       </property>
       <property name="text">
        <string>Sign in</string>
@@ -168,10 +178,10 @@ color: rgb(0, 0, 0);</string>
       <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Preferred</enum>
+         <enum>QSizePolicy::Policy::Preferred</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -195,15 +205,25 @@ color: rgb(0, 0, 0);</string>
          <string>Don't have an account? </string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="signUpBtn">
         <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(43, 43, 43);</string>
+         <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+background-color: rgb(43, 43, 43);
+}
+
+QPushButton:hover{
+background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(60, 60, 60);
+}</string>
         </property>
         <property name="text">
          <string>Sign up</string>

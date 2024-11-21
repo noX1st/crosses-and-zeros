@@ -35,7 +35,7 @@ void Game::mousePressEvent(QMouseEvent* event)
 void Game::paintEvent(QPaintEvent* event)
 {
     painter->begin(this);
-    painter->setPen(QPen(Qt::black, 2));
+    painter->setPen(QPen(Qt::white, 2));
     painter->drawLine(this->width()/3, 50, this->width()/3, this->height());
     painter->drawLine(this->width()/1.5, 50, this->width()/1.5, this->height());
     painter->drawLine(0, (this->height() - 50) /1.5 + 50, this->width(), (this->height() - 50) /1.5 + 50);
@@ -45,13 +45,13 @@ void Game::paintEvent(QPaintEvent* event)
     //drawCross(175, 25, 275, 125, 275, 25, 175, 125);
     if (player == 1)
     {
-        painter->setPen(QPen(Qt::black, 2));
+        painter->setPen(QPen(Qt::white, 2));
         painter->setFont(QFont("Verdana", 14));
         painter->drawText(width()/3, 30, "player 1 turn");
     }
     else
     {
-        painter->setPen(QPen(Qt::black, 2));
+        painter->setPen(QPen(Qt::white, 2));
         painter->setFont(QFont("Verdana", 14));
         painter->drawText(width()/3, 30, "player 2 turn");
     }
@@ -78,13 +78,13 @@ void Game::paintEvent(QPaintEvent* event)
 
 void Game::drawCircle(int x, int y)
 {
-    painter->setPen(QPen(Qt::black, 2));
+    painter->setPen(QPen(Qt::white, 2));
     painter->drawEllipse(x, y, 125, 125);
 }
 
 void Game::drawCross(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
 {
-    painter->setPen(QPen(Qt::black, 2));
+    painter->setPen(QPen(Qt::white, 2));
     painter->drawLine(x1, y1, x2, y2);
     painter->drawLine(x3, y3, x4, y4);
 }
