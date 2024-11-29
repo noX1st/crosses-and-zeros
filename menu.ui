@@ -284,7 +284,7 @@ background-color: rgb(255, 255, 255);
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_9">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="settingsGameBtn">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -306,18 +306,32 @@ color: rgb(255, 255, 255);
 QPushButton:hover{
 background-color: rgb(48, 48, 48);
 }
-
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(62, 62, 62);
 }</string>
         </property>
         <property name="text">
          <string>Game</string>
         </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+        <property name="autoExclusive">
+         <bool>false</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>300</number>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="settingsThemeBtn">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -339,18 +353,20 @@ color: rgb(255, 255, 255);
 QPushButton:hover{
 background-color: rgb(48, 48, 48);
 }
-
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(62, 62, 62);
 }</string>
         </property>
         <property name="text">
          <string>Theme</string>
         </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="settingsOtherBtn">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -372,18 +388,20 @@ color: rgb(255, 255, 255);
 QPushButton:hover{
 background-color: rgb(48, 48, 48);
 }
-
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(62, 62, 62);
 }</string>
         </property>
         <property name="text">
          <string>Other</string>
         </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="settingsResetBtn">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -405,13 +423,15 @@ color: rgb(255, 255, 255);
 QPushButton:hover{
 background-color: rgb(48, 48, 48);
 }
-
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(62, 62, 62);
 }</string>
         </property>
         <property name="text">
          <string>Reset</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

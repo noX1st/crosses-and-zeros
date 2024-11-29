@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <QDialog>
+#include <QButtonGroup>
 
 namespace Ui {
 class menu;
@@ -17,34 +18,24 @@ public:
 
 private slots:
     void on_startBtn_clicked();
-
     void on_singleBtn_clicked();
-
     void on_settingsBtn_clicked();
-
     void on_multiplayerBtn_clicked();
-
     void on_statisticBtn_clicked();
-
     void on_exitBtn_clicked();
-
     void on_BackBtn_clicked();
 
 signals:
     void startBtn_clicked();
-
     void singleBtn_clicked();
-
     void settingsBtn_clicked();
-
     void multiplayerBtn_clicked();
-
     void statisticBtn_clicked();
-
     void exitBtn_clicked();
 
 private:
     Ui::menu *ui;
+    QButtonGroup *settingsButtonGroup; // Группа кнопок для settingsPage
 };
 
 #endif // MENU_H
