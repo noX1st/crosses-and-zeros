@@ -262,32 +262,158 @@ background-color: rgb(255, 255, 255);
      <property name="geometry">
       <rect>
        <x>100</x>
-       <y>40</y>
+       <y>30</y>
        <width>401</width>
-       <height>321</height>
+       <height>281</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(38, 38, 38);</string>
      </property>
-     <widget class="QWidget" name="page"/>
-     <widget class="QWidget" name="page_2"/>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="settingsPageGame"/>
+     <widget class="QWidget" name="settingsPageTheme">
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>10</y>
+         <width>171</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Font</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFontComboBox" name="fontComboBox">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>101</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>101</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Theme</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <property name="minimumSize">
+             <size>
+              <width>101</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>101</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Black</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>White</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="settingsPageOther">
+      <widget class="QPushButton" name="settingsResetBtn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>91</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+padding: 5px; 
+}
+QPushButton:checked{
+background-color: rgb(65, 65, 65);
+}</string>
+       </property>
+       <property name="text">
+        <string>Reset settings</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
-       <width>82</width>
-       <height>130</height>
+       <y>30</y>
+       <width>91</width>
+       <height>104</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_9">
       <item>
-       <widget class="QPushButton" name="settingsGameBtn">
+       <widget class="QPushButton" name="settingsPageGameBtn">
         <property name="minimumSize">
          <size>
-          <width>80</width>
+          <width>85</width>
           <height>30</height>
          </size>
         </property>
@@ -301,6 +427,8 @@ background-color: rgb(255, 255, 255);
          <string notr="true">QPushButton{
 background-color: rgb(38, 38, 38);
 color: rgb(255, 255, 255);
+border: none;  
+padding: 5px; 
 }
 
 QPushButton:hover{
@@ -331,10 +459,10 @@ background-color: rgb(62, 62, 62);
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="settingsThemeBtn">
+       <widget class="QPushButton" name="settingsPageThemeBtn">
         <property name="minimumSize">
          <size>
-          <width>80</width>
+          <width>85</width>
           <height>30</height>
          </size>
         </property>
@@ -348,6 +476,8 @@ background-color: rgb(62, 62, 62);
          <string notr="true">QPushButton{
 background-color: rgb(38, 38, 38);
 color: rgb(255, 255, 255);
+border: none;  
+padding: 5px; 
 }
 
 QPushButton:hover{
@@ -358,18 +488,21 @@ background-color: rgb(62, 62, 62);
 }</string>
         </property>
         <property name="text">
-         <string>Theme</string>
+         <string>Appearance</string>
         </property>
         <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="settingsOtherBtn">
+       <widget class="QPushButton" name="settingsPageOtherBtn">
         <property name="minimumSize">
          <size>
-          <width>80</width>
+          <width>85</width>
           <height>30</height>
          </size>
         </property>
@@ -383,6 +516,8 @@ background-color: rgb(62, 62, 62);
          <string notr="true">QPushButton{
 background-color: rgb(38, 38, 38);
 color: rgb(255, 255, 255);
+border: none;  
+padding: 5px; 
 }
 
 QPushButton:hover{
@@ -394,41 +529,6 @@ background-color: rgb(62, 62, 62);
         </property>
         <property name="text">
          <string>Other</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="settingsResetBtn">
-        <property name="minimumSize">
-         <size>
-          <width>80</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>80</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-background-color: rgb(38, 38, 38);
-color: rgb(255, 255, 255);
-}
-
-QPushButton:hover{
-background-color: rgb(48, 48, 48);
-}
-QPushButton:checked{
-background-color: rgb(62, 62, 62);
-}</string>
-        </property>
-        <property name="text">
-         <string>Reset</string>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -477,6 +577,69 @@ background-image: url(:/new/prefix1/img/arrowW.png);</string>
         </property>
         <property name="text">
          <string>Settings</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>320</y>
+       <width>201</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="SettingsOkBtn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+background-color: rgb(55, 55, 55);
+}
+
+QPushButton:hover{
+background-color: rgb(45, 45, 45);
+}</string>
+        </property>
+        <property name="text">
+         <string>Ok</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="SettingsCancelBtn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+background-color: rgb(55, 55, 55);
+}
+
+QPushButton:hover{
+background-color: rgb(45, 45, 45);
+}</string>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="SettingsApplyBtn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+background-color: rgb(55, 55, 55);
+}
+
+QPushButton:hover{
+background-color: rgb(45, 45, 45);
+}</string>
+        </property>
+        <property name="text">
+         <string>Apply</string>
         </property>
        </widget>
       </item>

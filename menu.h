@@ -25,6 +25,9 @@ private slots:
     void on_exitBtn_clicked();
     void on_BackBtn_clicked();
 
+    void on_SettingsCancelBtn_clicked();
+    void on_SettingsOkBtn_clicked();
+
 signals:
     void startBtn_clicked();
     void singleBtn_clicked();
@@ -35,7 +38,7 @@ signals:
 
 private:
     Ui::menu *ui;
-    QButtonGroup *settingsButtonGroup; // Группа кнопок для settingsPage
+    QButtonGroup *settingsButtonGroup;
 };
 
 #endif // MENU_H

@@ -7,15 +7,12 @@ menu::menu(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Создание группы кнопок для settingsPage
     settingsButtonGroup = new QButtonGroup(this);
-    settingsButtonGroup->addButton(ui->settingsGameBtn, 0);
-    settingsButtonGroup->addButton(ui->settingsOtherBtn, 1);
-    settingsButtonGroup->addButton(ui->settingsResetBtn, 2);
-    settingsButtonGroup->addButton(ui->settingsThemeBtn, 3);
+    settingsButtonGroup->addButton(ui->settingsPageGameBtn, 0);
+    settingsButtonGroup->addButton(ui->settingsPageThemeBtn, 1);
+    settingsButtonGroup->addButton(ui->settingsPageOtherBtn, 2);
     settingsButtonGroup->setExclusive(true);
 
-    // Подключение сигналов для переключения вкладок в stackedWidget_2
     connect(settingsButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked),
             this, [this](QAbstractButton *button) {
                 int id = settingsButtonGroup->id(button);
@@ -63,3 +60,14 @@ void menu::on_BackBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
+
+void menu::on_SettingsCancelBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void menu::on_SettingsOkBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
