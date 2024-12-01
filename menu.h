@@ -28,6 +28,8 @@ private slots:
     void on_SettingsCancelBtn_clicked();
     void on_SettingsOkBtn_clicked();
 
+    void on_BackBtn_2_clicked();
+
 signals:
     void startBtn_clicked();
     void singleBtn_clicked();

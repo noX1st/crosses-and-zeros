@@ -36,6 +36,8 @@ public:
     void exit();
     void exitApp();
 
+    //void BackBtn_clicked();
+
 private:
     sign_in sign_in;
     sign_up registration;

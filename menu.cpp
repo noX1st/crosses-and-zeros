@@ -9,7 +9,7 @@ menu::menu(QWidget *parent)
 
     settingsButtonGroup = new QButtonGroup(this);
     settingsButtonGroup->addButton(ui->settingsPageGameBtn, 0);
-    settingsButtonGroup->addButton(ui->settingsPageThemeBtn, 1);
+    settingsButtonGroup->addButton(ui->settingsPageAppearanceBtn, 1);
     settingsButtonGroup->addButton(ui->settingsPageOtherBtn, 2);
     settingsButtonGroup->setExclusive(true);
 
@@ -48,6 +48,7 @@ void menu::on_multiplayerBtn_clicked()
 
 void menu::on_statisticBtn_clicked()
 {
+    ui->stackedWidget->setCurrentIndex(2);
     emit statisticBtn_clicked();
 }
 
@@ -61,6 +62,11 @@ void menu::on_BackBtn_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void menu::on_BackBtn_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
 void menu::on_SettingsCancelBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -70,4 +76,3 @@ void menu::on_SettingsOkBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
-

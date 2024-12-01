@@ -27,6 +27,11 @@ MainWindow::MainWindow(QWidget *parent)
     userSql->createTable();
 }
 
+/*void MainWindow::BackBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}*/
+
 void MainWindow::changeWindow()
 {
     registration.show();
