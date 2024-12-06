@@ -231,7 +231,7 @@ void menu::changeTheme(const QString &theme)
     for (QPushButton *pushButton : statisticPushButtons) {
         pushButton->setStyleSheet(pushButtonStyle);
     }
-//
+
     //
     ui->SettingsOkBtn->setStyleSheet(CornerBtns);
     ui->SettingsCancelBtn->setStyleSheet(CornerBtns);
