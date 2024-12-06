@@ -52,7 +52,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="menuPage">
       <widget class="QWidget" name="layoutWidget">
@@ -69,7 +69,7 @@
          <widget class="QLabel" name="menuLbl">
           <property name="font">
            <font>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <bold>true</bold>
            </font>
           </property>
@@ -109,16 +109,18 @@
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(220, 220, 220);
-color: rgb(0, 0, 0);
+background-color: rgb(38, 38, 38);
+color: white;
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
-background-color: rgb(240, 240, 240);
+background-color: rgb(48, 48, 48);
 }
 
 QPushButton:pressed{
-background-color: rgb(255, 255, 255);
+background-color: rgb(62, 62, 62);
 }</string>
             </property>
             <property name="text">
@@ -140,16 +142,18 @@ background-color: rgb(255, 255, 255);
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
-background-color: rgb(220, 220, 220);
-color: rgb(0, 0, 0);
+background-color: rgb(38, 38, 38);
+color: white;
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
-background-color: rgb(240, 240, 240);
+background-color: rgb(48, 48, 48);
 }
 
 QPushButton:pressed{
-background-color: rgb(255, 255, 255);
+background-color: rgb(62, 62, 62);
 }</string>
                 </property>
                 <property name="text">
@@ -167,16 +171,18 @@ background-color: rgb(255, 255, 255);
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
-background-color: rgb(220, 220, 220);
-color: rgb(0, 0, 0);
+background-color: rgb(38, 38, 38);
+color: white;
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
-background-color: rgb(240, 240, 240);
+background-color: rgb(48, 48, 48);
 }
 
 QPushButton:pressed{
-background-color: rgb(255, 255, 255);
+background-color: rgb(62, 62, 62);
 }</string>
                 </property>
                 <property name="text">
@@ -198,16 +204,18 @@ background-color: rgb(255, 255, 255);
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
-background-color: rgb(220, 220, 220);
-color: rgb(0, 0, 0);
+background-color: rgb(38, 38, 38);
+color: white;
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
-background-color: rgb(240, 240, 240);
+background-color: rgb(48, 48, 48);
 }
 
 QPushButton:pressed{
-background-color: rgb(255, 255, 255);
+background-color: rgb(62, 62, 62);
 }</string>
                 </property>
                 <property name="text">
@@ -225,16 +233,18 @@ background-color: rgb(255, 255, 255);
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
-background-color: rgb(220, 220, 220);
-color: rgb(0, 0, 0);
+background-color: rgb(38, 38, 38);
+color: white;
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
-background-color: rgb(240, 240, 240);
+background-color: rgb(48, 48, 48);
 }
 
 QPushButton:pressed{
-background-color: rgb(255, 255, 255);
+background-color: rgb(62, 62, 62);
 }</string>
                 </property>
                 <property name="text">
@@ -256,16 +266,18 @@ background-color: rgb(255, 255, 255);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(220, 220, 220);
-color: rgb(0, 0, 0);
+background-color: rgb(38, 38, 38);
+color: white;
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
-background-color: rgb(240, 240, 240);
+background-color: rgb(48, 48, 48);
 }
 
 QPushButton:pressed{
-background-color: rgb(255, 255, 255);
+background-color: rgb(62, 62, 62);
 }</string>
             </property>
             <property name="text">
@@ -354,8 +366,8 @@ background-image: url(:/new/prefix1/img/arrowW.png);</string>
               <string notr="true">QPushButton{
 background-color: rgb(38, 38, 38);
 color: rgb(255, 255, 255);
-border: none;  
-padding: 5px; 
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
@@ -403,8 +415,8 @@ background-color: rgb(62, 62, 62);
               <string notr="true">QPushButton{
 background-color: rgb(38, 38, 38);
 color: rgb(255, 255, 255);
-border: none;  
-padding: 5px; 
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
@@ -443,8 +455,8 @@ background-color: rgb(62, 62, 62);
               <string notr="true">QPushButton{
 background-color: rgb(38, 38, 38);
 color: rgb(255, 255, 255);
-border: none;  
-padding: 5px; 
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
@@ -478,7 +490,7 @@ background-color: rgb(62, 62, 62);
           </layout>
          </item>
          <item row="1" column="1">
-          <widget class="QStackedWidget" name="stackedWidget_2">
+          <widget class="QStackedWidget" name="stackedWidgetSettings">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -495,7 +507,7 @@ background-color: rgb(62, 62, 62);
             <string notr="true">background-color: rgb(38, 38, 38);</string>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="settingsPageGame">
             <widget class="QWidget" name="layoutWidget">
@@ -538,7 +550,7 @@ background-color: rgb(62, 62, 62);
                <widget class="QSpinBox" name="spinBox">
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(55, 55, 55);
-color: rgb(255, 255, 255);</string>
+color: white;</string>
                 </property>
                 <property name="minimum">
                  <number>1</number>
@@ -601,7 +613,16 @@ color: rgb(255, 255, 255);</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
+                   <string notr="true">QComboBox{
+background-color: rgb(62, 62, 62);
+color: white;
+border: none;  
+padding: 5px; 
+}
+
+QComboBox:hover{
+background-color: rgb(72, 72, 72);
+}</string>
                   </property>
                  </widget>
                 </item>
@@ -620,7 +641,7 @@ color: rgb(255, 255, 255);</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox">
+                 <widget class="QComboBox" name="themeComboBox">
                   <property name="minimumSize">
                    <size>
                     <width>101</width>
@@ -634,7 +655,21 @@ color: rgb(255, 255, 255);</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">color: rgb(255, 255, 255);</string>
+                   <string notr="true">background-color: rgb(62, 62, 62);
+color: white;
+border: none;
+padding: 5px;
+
+/*QComboBox{
+background-color: rgb(62, 62, 62);
+color: white;
+border: none;
+padding: 5px;
+}
+
+QComboBox:hover{
+background-color: rgb(72, 72, 72);
+}*/</string>
                   </property>
                   <item>
                    <property name="text">
@@ -667,10 +702,14 @@ color: rgb(255, 255, 255);</string>
               <string notr="true">QPushButton{
 background-color: rgb(55, 55, 55);
 color: rgb(255, 255, 255);
+border: none;  
 padding: 5px; 
 }
-QPushButton:checked{
+QPushButton:hover{
 background-color: rgb(65, 65, 65);
+}
+QPushButton:pressed{
+background-color: rgb(70, 70, 70);
 }</string>
              </property>
              <property name="text">
@@ -697,14 +736,26 @@ background-color: rgb(65, 65, 65);
            </item>
            <item>
             <widget class="QPushButton" name="SettingsOkBtn">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>24</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
 background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
 background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(46, 46, 46);
 }</string>
              </property>
              <property name="text">
@@ -714,14 +765,26 @@ background-color: rgb(50, 50, 50);
            </item>
            <item>
             <widget class="QPushButton" name="SettingsCancelBtn">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>24</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
 background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
 background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(46, 46, 46);
 }</string>
              </property>
              <property name="text">
@@ -731,14 +794,26 @@ background-color: rgb(50, 50, 50);
            </item>
            <item>
             <widget class="QPushButton" name="SettingsApplyBtn">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>24</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
 background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
 }
 
 QPushButton:hover{
 background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(46, 46, 46);
 }</string>
              </property>
              <property name="text">
@@ -753,7 +828,7 @@ background-color: rgb(50, 50, 50);
       </layout>
      </widget>
      <widget class="QWidget" name="statisticPage">
-      <widget class="QStackedWidget" name="stackedWidget_4">
+      <widget class="QStackedWidget" name="stackedWidgetSettings_2">
        <property name="geometry">
         <rect>
          <x>100</x>

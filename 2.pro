@@ -32,7 +32,6 @@ HEADERS += \
     user.h
 
 FORMS += \
-    form.ui \
     game.ui \
     mainwindow.ui \
     menu.ui \

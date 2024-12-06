@@ -30,6 +30,8 @@ private slots:
 
     void on_BackBtn_2_clicked();
 
+    void changeTheme(const QString &theme);
+
 signals:
     void startBtn_clicked();
     void singleBtn_clicked();
