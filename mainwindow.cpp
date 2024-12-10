@@ -110,11 +110,13 @@ void MainWindow::signIn()
 
 void MainWindow::signUp()
 {
-    if (registration.get_username().isEmpty() || registration.get_email().isEmpty() || registration.get_password().isEmpty() || registration.get_confirm().isEmpty()) {
+    if (registration.get_username().isEmpty() || registration.get_email().isEmpty() || registration.get_password().isEmpty() || registration.get_confirm().isEmpty())
+    {
         QMessageBox::warning(this, "Warning", "Please fill in all fields.", QMessageBox::Ok);
         return;
     }
-    if (!registration.get_email().contains('@')) {
+    if (!registration.get_email().contains('@'))
+    {
         QMessageBox::warning(this, "Warning", "Please enter a valid email", QMessageBox::Ok);
         return;
     }
@@ -132,7 +134,8 @@ void MainWindow::signUp()
     {
         throw (std::runtime_error("dynamic cast error"));
     }
-    if (sql->getUser(*user, sqlConstans::userTableName, registration.get_email(), registration.get_password())) {
+    if (sql->getUser(*user, sqlConstans::userTableName, registration.get_email(), registration.get_password()))
+    {
         QMessageBox::warning(this, "Warning", "This user already exists", QMessageBox::Ok);
         return;
     }

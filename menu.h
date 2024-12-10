@@ -30,7 +30,7 @@ private slots:
 
     void on_BackBtn_2_clicked();
 
-    void changeTheme(const QString &theme);
+    void on_SettingsApplyBtn_clicked();
 
 signals:
     void startBtn_clicked();
@@ -43,6 +43,21 @@ signals:
 private:
     Ui::menu *ui;
     QButtonGroup *settingsButtonGroup;
+
+    struct Settings
+    {
+        QString theme;
+        QString font;
+    };
+    Settings pendingSettings;
+    Settings appliedSettings;
+
+    void rollbackSettings();
+    void changeTheme(const QString &theme);
+    void changeFont(const QFont &font);
+    void applyFont(const QFont &font);
+    void applyTheme();
+    void applySettings();
 };
 
 #endif // MENU_H

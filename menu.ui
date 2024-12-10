@@ -309,38 +309,105 @@ background-color: rgb(62, 62, 62);
          <property name="sizeConstraint">
           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
          </property>
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item row="2" column="0" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
-            <widget class="QPushButton" name="BackBtn">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
-             <property name="maximumSize">
+             <property name="sizeHint" stdset="0">
               <size>
-               <width>24</width>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="SettingsOkBtn">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
                <height>24</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(30, 30, 30);
-background-image: url(:/new/prefix1/img/arrowW.png);</string>
+              <string notr="true">QPushButton{
+background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
+}
+
+QPushButton:hover{
+background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(46, 46, 46);
+}</string>
              </property>
              <property name="text">
-              <string/>
+              <string>Ok</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="SettingsLbl">
+            <widget class="QPushButton" name="SettingsCancelBtn">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>24</height>
+              </size>
+             </property>
              <property name="styleSheet">
-              <string notr="true">color: rgb(255, 255, 255);</string>
+              <string notr="true">QPushButton{
+background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
+}
+
+QPushButton:hover{
+background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(46, 46, 46);
+}</string>
              </property>
              <property name="text">
-              <string>Menu</string>
+              <string>Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="SettingsApplyBtn">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+background-color: rgb(55, 55, 55);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
+}
+
+QPushButton:hover{
+background-color: rgb(50, 50, 50);
+}
+
+QPushButton:pressed{
+background-color: rgb(46, 46, 46);
+}</string>
+             </property>
+             <property name="text">
+              <string>Apply</string>
              </property>
             </widget>
            </item>
@@ -348,6 +415,9 @@ background-image: url(:/new/prefix1/img/arrowW.png);</string>
          </item>
          <item row="1" column="0">
           <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+           </item>
            <item>
             <widget class="QPushButton" name="settingsPageGameBtn">
              <property name="minimumSize">
@@ -719,105 +789,58 @@ background-color: rgb(70, 70, 70);
            </widget>
           </widget>
          </item>
-         <item row="2" column="0" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
            <item>
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+            <widget class="QPushButton" name="BackBtn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="SettingsOkBtn">
              <property name="minimumSize">
               <size>
-               <width>80</width>
-               <height>24</height>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>12</width>
+               <height>12</height>
               </size>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
-background-color: rgb(55, 55, 55);
+background-color: rgb(30, 30, 30);
 color: rgb(255, 255, 255);
 border: none;
 padding: 5px;
-}
-
-QPushButton:hover{
-background-color: rgb(50, 50, 50);
-}
-
-QPushButton:pressed{
-background-color: rgb(46, 46, 46);
 }</string>
              </property>
              <property name="text">
-              <string>Ok</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>icons/arrow.png</normaloff>icons/arrow.png</iconset>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="SettingsCancelBtn">
-             <property name="minimumSize">
+            <widget class="QLabel" name="SettingsLbl">
+             <property name="maximumSize">
               <size>
-               <width>80</width>
-               <height>24</height>
+               <width>16777215</width>
+               <height>16777215</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton{
-background-color: rgb(55, 55, 55);
-color: rgb(255, 255, 255);
-border: none;
-padding: 5px;
-}
-
-QPushButton:hover{
-background-color: rgb(50, 50, 50);
-}
-
-QPushButton:pressed{
-background-color: rgb(46, 46, 46);
-}</string>
+              <string notr="true">color: rgb(255, 255, 255);</string>
              </property>
              <property name="text">
-              <string>Cancel</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="SettingsApplyBtn">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>24</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
-background-color: rgb(55, 55, 55);
-color: rgb(255, 255, 255);
-border: none;
-padding: 5px;
-}
-
-QPushButton:hover{
-background-color: rgb(50, 50, 50);
-}
-
-QPushButton:pressed{
-background-color: rgb(46, 46, 46);
-}</string>
-             </property>
-             <property name="text">
-              <string>Apply</string>
+              <string>Menu</string>
              </property>
             </widget>
            </item>
@@ -848,11 +871,11 @@ background-color: rgb(46, 46, 46);
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>71</width>
-         <height>26</height>
+         <width>51</width>
+         <height>18</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
          <widget class="QPushButton" name="BackBtn_2">
           <property name="sizePolicy">
@@ -861,23 +884,43 @@ background-color: rgb(46, 46, 46);
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>12</width>
+            <height>12</height>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(30, 30, 30);
-background-image: url(:/new/prefix1/img/arrowW.png);</string>
+           <string notr="true">QPushButton{
+background-color: rgb(30, 30, 30);
+color: rgb(255, 255, 255);
+border: none;
+padding: 5px;
+}</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>icons/arrow.png</normaloff>icons/arrow.png</iconset>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="SettingsLbl_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(255, 255, 255);</string>
           </property>

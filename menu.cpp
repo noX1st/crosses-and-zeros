@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "ui_menu.h"
 #include <QSettings>
+#include <QIcon>
 
 
 menu::menu(QWidget *parent)
@@ -15,11 +16,12 @@ menu::menu(QWidget *parent)
     settingsButtonGroup->addButton(ui->settingsPageOtherBtn, 2);
     settingsButtonGroup->setExclusive(true);
 
-    connect(settingsButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked), this, [this](QAbstractButton *button) {
+    connect(settingsButtonGroup, QOverload<QAbstractButton *>::of(&QButtonGroup::buttonClicked), this, [this](QAbstractButton *button){
         int id = settingsButtonGroup->id(button);
         ui->stackedWidgetSettings->setCurrentIndex(id);
     });
     connect(ui->themeComboBox, &QComboBox::currentTextChanged, this, &menu::changeTheme);
+    connect(ui->fontComboBox, &QFontComboBox::currentFontChanged, this, &menu::changeFont);
 }
 
 menu::~menu()
@@ -69,19 +71,112 @@ void menu::on_BackBtn_2_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void menu::rollbackSettings()
+{
+    pendingSettings = appliedSettings;
+    changeTheme(appliedSettings.theme);
+    ui->themeComboBox->setCurrentText(appliedSettings.theme);
+}
+
 void menu::on_SettingsCancelBtn_clicked()
 {
+    rollbackSettings();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void menu::on_SettingsOkBtn_clicked()
 {
+    applyTheme();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void menu::on_SettingsApplyBtn_clicked()
+{
+    applySettings();
+}
+
+void menu::applySettings()
+{
+    applyTheme();
+    applyFont(QFont(pendingSettings.font));
+}
 
 void menu::changeTheme(const QString &theme)
 {
+    pendingSettings.theme = theme;
+}
+
+void menu::changeFont(const QFont &font)
+{
+    pendingSettings.font = font.family();
+}
+
+void menu::applyFont(const QFont &font)
+{
+    if (pendingSettings.font.isEmpty())
+    {
+        qDebug() << "Font is empty. Applying default font";
+        pendingSettings.font = "Segoe UI";
+    }
+    QString fontStyle;
+    if (appliedSettings.theme == "Black")
+    {
+        fontStyle = QString("font-family: '%1'; color: white").arg(font.family());
+    }
+    else if (appliedSettings.theme == "White")
+    {
+        fontStyle = QString("font-family: '%1'; color: black").arg(font.family());
+    }
+    /*else if (appliedSettings.theme == "") {
+        fontStyle = QString("font-family: '%1'; color: white").arg(font.family());
+        //fontStyle = QString("font-family: 'Nirmala UI'; color: white");
+    }*/
+
+    ui->menuPage->setStyleSheet(fontStyle);
+
+    QList<QLabel *> labels = this->findChildren<QLabel *>();
+    for (QLabel *label : labels)
+    {
+        label->setStyleSheet(fontStyle);
+    }
+
+    QList<QPushButton *> settingsPushButtons = this->findChildren<QPushButton *>();
+    for (QPushButton *pushButton : settingsPushButtons)
+    {
+        QFont font = pushButton->font();
+        font.setFamily(pendingSettings.font);
+        pushButton->setFont(font);
+    }
+
+    QList<QComboBox *> settingsComboBoxes = this->findChildren<QComboBox *>();
+    for (QComboBox *comboBox : settingsComboBoxes)
+    {
+        QFont font = comboBox->font();
+        font.setFamily(pendingSettings.font);
+        comboBox->setFont(font);
+    }
+    //
+    /*QList<QFontComboBox *> settingsFontComboBoxes = this->findChildren<QFontComboBox *>();
+    for (QFontComboBox *fontComboBox : settingsFontComboBoxes) {
+        QFont font = fontComboBox->font();
+        font.setFamily(pendingSettings.font);
+        fontComboBox->setFont(font);
+    }*/
+
+    qDebug() << "Applied font: " << font.family();
+}
+
+void menu::applyTheme()
+{
+    if (pendingSettings.theme.isEmpty())
+    {
+        qDebug() << "Theme is empty. Applying default theme";
+        pendingSettings.theme = "Black";
+    }
+    appliedSettings.theme = pendingSettings.theme;
+
+    //QString theme = appliedSettings.theme;
+
     QString menuStyle;
 
     QString menuPageStyle;
@@ -96,9 +191,11 @@ void menu::changeTheme(const QString &theme)
 
     QString statisticPageStyle;
 
-    QString CornerBtns;
+    QString cornerBtns;
+    QString backBtn;
+    QIcon setIcon;
 
-    if (theme == "Black")
+    if (appliedSettings.theme == "Black")
     {
         menuStyle = "background-color: rgb(30, 30, 30); color: black;";
         //Menu
@@ -110,18 +207,20 @@ void menu::changeTheme(const QString &theme)
         settingsPageStyle = "background-color: rgb(30, 30, 30); color: white;";
         stackedWidgetSettingsStyle = "background-color: rgb(38, 38, 38); color: white;";
         pushButtonStyle = "QPushButton"
-        "{ background-color: rgb(38, 38, 38); color: white; border: none; padding: 5px; }"
-        "QPushButton:hover"
-        "{ background-color: rgb(48, 48, 48);  }"
-        "QPushButton:pressed"
-        "{ background-color: rgb(62, 62, 62);  }";
+                          "{ background-color: rgb(38, 38, 38); color: white; border: none; padding: 5px; }"
+                          "QPushButton:hover"
+                          "{ background-color: rgb(48, 48, 48);  }"
+                          "QPushButton:checked"
+                          "{ background-color: rgb(62, 62, 62);  }"
+                          "QPushButton:pressed"
+                          "{ background-color: rgb(62, 62, 62);  }";
 
         resetBtnStyle = "QPushButton"
-        "{ background-color: rgb(55, 55, 55); color: white; border: none; padding: 5px; }"
-        "QPushButton:hover"
-        "{ background-color: rgb(65, 65, 65); }"
-        "QPushButton:pressed"
-        "{ background-color: rgb(70, 70, 70); }";
+                        "{ background-color: rgb(55, 55, 55); color: white; border: none; padding: 5px; }"
+                        "QPushButton:hover"
+                        "{ background-color: rgb(65, 65, 65); }"
+                        "QPushButton:pressed"
+                        "{ background-color: rgb(70, 70, 70); }";
 
         comboBoxStyle = "background-color: rgb(62, 62, 62); color: white; border: none; padding: 5px;";
         spinBoxStyle = "background-color: rgb(55, 55, 55); color: white;";
@@ -131,14 +230,18 @@ void menu::changeTheme(const QString &theme)
         statisticPageStyle = "background-color: rgb(30, 30, 30); color: white;";
 
         //
-        CornerBtns = "QPushButton"
-        "{ background-color: rgb(55, 55, 55); color: rgb(255, 255, 255); border: none; padding: 5px; }"
-        "QPushButton:hover"
-        "{ background-color: rgb(50, 50, 50); }"
-        "QPushButton:pressed"
-        "{ background-color: rgb(46, 46, 46); }";
+        cornerBtns = "QPushButton"
+                     "{ background-color: rgb(55, 55, 55); color: rgb(255, 255, 255); border: none; padding: 5px; }"
+                     "QPushButton:hover"
+                     "{ background-color: rgb(50, 50, 50); }"
+                     "QPushButton:pressed"
+                     "{ background-color: rgb(46, 46, 46); }";
+
+        backBtn = "background-color: rgb(30, 30, 30); color: rgb(255, 255, 255); border: none; padding: 5px;";
+        ui->BackBtn->setIcon(QIcon("D:/programs/programming/qt folder/2/2/icons/arrow.png"));
+        ui->BackBtn_2->setIcon(QIcon("D:/programs/programming/qt folder/2/2/icons/arrow.png"));
     }
-    else if (theme == "White")
+    else if (appliedSettings.theme == "White")
     {
         menuStyle = "background-color: rgb(220, 220, 220); color: black;";
         //Menu
@@ -150,18 +253,20 @@ void menu::changeTheme(const QString &theme)
         settingsPageStyle = "background-color: rgb(220, 220, 220); color: rgb(50, 50, 50);";
         stackedWidgetSettingsStyle = "background-color: rgb(212, 212, 212); color: rgb(50, 50, 50);";
         pushButtonStyle = "QPushButton"
-        "{ background-color: rgb(208, 208, 208); color: rgb(50, 50, 50); border: none; padding: 5px; }"
-        "QPushButton:hover"
-        "{ background-color: rgb(200, 200, 200); }"
-        "QPushButton:pressed"
-        "{ background-color: rgb(188, 188, 188); }";
+                          "{ background-color: rgb(208, 208, 208); color: rgb(50, 50, 50); border: none; padding: 5px; }"
+                          "QPushButton:hover"
+                          "{ background-color: rgb(200, 200, 200); }"
+                          "QPushButton:checked"
+                          "{ background-color: rgb(188, 188, 188); }"
+                          "QPushButton:pressed"
+                          "{ background-color: rgb(188, 188, 188); }";
 
         resetBtnStyle = "QPushButton"
-        "{ background-color: rgb(195, 195, 195); color: rgb(50, 50, 50); border: none; padding: 5px; }"
-        "QPushButton:hover"
-        "{ background-color: rgb(185, 185, 185); }"
-        "QPushButton:pressed"
-        "{ background-color: rgb(171, 171, 171); }";
+                        "{ background-color: rgb(195, 195, 195); color: rgb(50, 50, 50); border: none; padding: 5px; }"
+                        "QPushButton:hover"
+                        "{ background-color: rgb(185, 185, 185); }"
+                        "QPushButton:pressed"
+                        "{ background-color: rgb(171, 171, 171); }";
 
         comboBoxStyle = "background-color: rgb(190, 190, 190); color: rgb(50, 50, 50); border: none; padding: 5px;";
         spinBoxStyle = "background-color: rgb(190, 190, 190); color: rgb(50, 50, 50)";
@@ -171,69 +276,85 @@ void menu::changeTheme(const QString &theme)
         statisticPageStyle = "background-color: rgb(220, 220, 220); color: black; border: white;";
 
         //
-        CornerBtns = "QPushButton"
-        "{ background-color: rgb(212, 212, 212); color: rgb(50, 50, 50); border: none; padding: 5px; }"
-        "QPushButton:hover"
-        "{ background-color: rgb(200, 200, 200); }"
-        "QPushButton:pressed"
-        "{ background-color: rgb(188, 188, 188); }";
+        cornerBtns = "QPushButton"
+                     "{ background-color: rgb(212, 212, 212); color: rgb(50, 50, 50); border: none; padding: 5px; }"
+                     "QPushButton:hover"
+                     "{ background-color: rgb(200, 200, 200); }"
+                     "QPushButton:pressed"
+                     "{ background-color: rgb(188, 188, 188); }";
+
+        backBtn = "background-color: rgb(220, 220, 220); color: rgb(255, 255, 255); border: none; padding: 5px;";
+        ui->BackBtn->setIcon(QIcon("D:/programs/programming/qt folder/2/2/icons/blackArrow.png"));
+        ui->BackBtn_2->setIcon(QIcon("D:/programs/programming/qt folder/2/2/icons/blackArrow.png"));
     }
 
     this->setStyleSheet(menuStyle);
     //Menu
     ui->menuPage->setStyleSheet(menuPageStyle);
     QList<QLabel *> menuLabels = ui->menuPage->findChildren<QLabel *>();
-    for (QLabel *label : menuLabels) {
+    for (QLabel *label : menuLabels)
+    {
         label->setStyleSheet(labelStyle);
     }
     QList<QPushButton *> menuPagePushButtons = ui->menuPage->findChildren<QPushButton *>();
-    for (QPushButton *pushButton : menuPagePushButtons) {
+    for (QPushButton *pushButton : menuPagePushButtons)
+    {
         pushButton->setStyleSheet(pushButtonStyle);
     }
 
 
     //Settings
-    ui->settingsPage->setStyleSheet(settingsPageStyle);
-    ui->stackedWidgetSettings->setStyleSheet(stackedWidgetSettingsStyle);
-    ui->settingsResetBtn->setStyleSheet(resetBtnStyle);
+
     QList<QLabel *> settingsLabels = ui->settingsPage->findChildren<QLabel *>();
-    for (QLabel *label : settingsLabels) {
+    for (QLabel *label : settingsLabels)
+    {
         label->setStyleSheet(labelStyle);
     }
 
     QList<QPushButton *> settingsPushButtons = ui->settingsPage->findChildren<QPushButton *>();
-    for (QPushButton *pushButton : settingsPushButtons) {
-        if (pushButton != ui->settingsResetBtn) {
-            pushButton->setStyleSheet(pushButtonStyle);
-        }
+    for (QPushButton *pushButton : settingsPushButtons)
+    {
+        pushButton->setStyleSheet(pushButtonStyle);
     }
 
     QList<QComboBox *> settingsComboBoxes = ui->settingsPage->findChildren<QComboBox *>();
-    for (QComboBox *comboBox : settingsComboBoxes) {
+    for (QComboBox *comboBox : settingsComboBoxes)
+    {
         comboBox->setStyleSheet(comboBoxStyle);
     }
 
     QList<QSpinBox *> settingsSpinBoxes = ui->settingsPage->findChildren<QSpinBox *>();
-    for (QSpinBox *spinBox : settingsSpinBoxes) {
+    for (QSpinBox *spinBox : settingsSpinBoxes)
+    {
         spinBox->setStyleSheet(spinBoxStyle);
     }
+    ui->settingsPage->setStyleSheet(settingsPageStyle);
+    ui->stackedWidgetSettings->setStyleSheet(stackedWidgetSettingsStyle);
+    ui->settingsResetBtn->setStyleSheet(resetBtnStyle);
 
 
     //Statistic
     ui->statisticPage->setStyleSheet(statisticPageStyle);
     ui->stackedWidgetSettings_2->setStyleSheet(stackedWidgetSettingsStyle);
     QList<QLabel *> statisticLabels = ui->statisticPage->findChildren<QLabel *>();
-    for (QLabel *label : statisticLabels) {
+    for (QLabel *label : statisticLabels)
+    {
         label->setStyleSheet(labelStyle);
     }
 
     QList<QPushButton *> statisticPushButtons = ui->statisticPage->findChildren<QPushButton *>();
-    for (QPushButton *pushButton : statisticPushButtons) {
+    for (QPushButton *pushButton : statisticPushButtons)
+    {
         pushButton->setStyleSheet(pushButtonStyle);
     }
-//
+
+
     //
-    ui->SettingsOkBtn->setStyleSheet(CornerBtns);
-    ui->SettingsCancelBtn->setStyleSheet(CornerBtns);
-    ui->SettingsApplyBtn->setStyleSheet(CornerBtns);
+    ui->SettingsOkBtn->setStyleSheet(cornerBtns);
+    ui->SettingsCancelBtn->setStyleSheet(cornerBtns);
+    ui->SettingsApplyBtn->setStyleSheet(cornerBtns);
+    ui->BackBtn->setStyleSheet(backBtn);
+    ui->BackBtn_2->setStyleSheet(backBtn);
+
+    qDebug() << "Applied theme: " << pendingSettings.theme;
 }
