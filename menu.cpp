@@ -217,7 +217,7 @@ void menu::changeTheme(const QString &theme)
     for (QSpinBox *spinBox : settingsSpinBoxes) {
         spinBox->setStyleSheet(spinBoxStyle);
     }
-//
+////
 
     //Statistic
     ui->statisticPage->setStyleSheet(statisticPageStyle);
