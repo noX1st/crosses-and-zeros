@@ -22,6 +22,8 @@ menu::menu(QWidget *parent)
     });
     connect(ui->themeComboBox, &QComboBox::currentTextChanged, this, &menu::changeTheme);
     connect(ui->fontComboBox, &QFontComboBox::currentFontChanged, this, &menu::changeFont);
+
+    loadSettings();
 }
 
 menu::~menu()
@@ -75,6 +77,17 @@ void menu::rollbackSettings()
 {
     pendingSettings = appliedSettings;
     changeTheme(appliedSettings.theme);
+    changeFont(appliedSettings.font);
+    QFont font;
+    if (font.fromString(pendingSettings.font))
+    {
+        ui->fontComboBox->setCurrentFont(font);
+    }
+    else
+    {
+        ui->fontComboBox->setCurrentFont(QFont("Segoe UI"));
+    }
+
     ui->themeComboBox->setCurrentText(appliedSettings.theme);
 }
 
@@ -86,19 +99,28 @@ void menu::on_SettingsCancelBtn_clicked()
 
 void menu::on_SettingsOkBtn_clicked()
 {
-    applyTheme();
+    applySettings();
+    saveSettings();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
 void menu::on_SettingsApplyBtn_clicked()
 {
     applySettings();
+    saveSettings();
 }
 
 void menu::applySettings()
 {
     applyTheme();
-    applyFont(QFont(pendingSettings.font));
+    QFont font;
+    if (font.fromString(pendingSettings.font))
+    {
+        applyFont(font);
+    }
+
+    appliedSettings = pendingSettings;
+    saveSettings();
 }
 
 void menu::changeTheme(const QString &theme)
@@ -108,11 +130,12 @@ void menu::changeTheme(const QString &theme)
 
 void menu::changeFont(const QFont &font)
 {
-    pendingSettings.font = font.family();
+    pendingSettings.font = font.toString();
 }
 
 void menu::applyFont(const QFont &font)
 {
+    QString fontBox;
     if (pendingSettings.font.isEmpty())
     {
         qDebug() << "Font is empty. Applying default font";
@@ -131,10 +154,19 @@ void menu::applyFont(const QFont &font)
         fontStyle = QString("font-family: '%1'; color: white").arg(font.family());
         //fontStyle = QString("font-family: 'Nirmala UI'; color: white");
     }*/
-
+    if (appliedSettings.theme == "Black")
+    {
+        fontBox = "font-family: Segoe UI; background-color: rgb(62, 62, 62); color: white; border: none; padding: 5px;";
+    }
+    else if (appliedSettings.theme == "White")
+    {
+        fontBox = "font-family: Segoe UI; background-color: rgb(188, 188, 188); color: black; border: none; padding: 5px;";
+    }
     ui->menuPage->setStyleSheet(fontStyle);
-
-    QList<QLabel *> labels = this->findChildren<QLabel *>();
+    ui->settingsPage->setStyleSheet(fontStyle);
+    ui->statisticPage->setStyleSheet(fontStyle);
+    ui->fontComboBox->setStyleSheet(fontBox);
+    /*QList<QLabel *> labels = this->findChildren<QLabel *>();
     for (QLabel *label : labels)
     {
         label->setStyleSheet(fontStyle);
@@ -174,8 +206,6 @@ void menu::applyTheme()
         pendingSettings.theme = "Black";
     }
     appliedSettings.theme = pendingSettings.theme;
-
-    //QString theme = appliedSettings.theme;
 
     QString menuStyle;
 
@@ -357,4 +387,49 @@ void menu::applyTheme()
     ui->BackBtn_2->setStyleSheet(backBtn);
 
     qDebug() << "Applied theme: " << pendingSettings.theme;
+}
+
+void menu::saveSettings()
+{
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "nxst", "user");
+
+
+    settings.beginGroup("Appearance");
+    settings.setValue("theme", appliedSettings.theme);
+    settings.setValue("font", appliedSettings.font);
+    settings.endGroup();
+
+    qDebug() << "Settings saved at:" << settings.fileName()
+             << "Theme:" << appliedSettings.theme
+             << "Font:" << appliedSettings.font;
+
+}
+
+void menu::loadSettings()
+{
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "nxst", "user");
+
+
+    //default
+    settings.beginGroup("Appearance");
+    QString theme = settings.value("theme", "Black").toString();
+    QString font = settings.value("font", "Segoe UI").toString();
+    settings.endGroup();
+
+    //load
+    pendingSettings.theme = theme;
+    pendingSettings.font = font;
+    QFont fontB;
+    if (fontB.fromString(pendingSettings.font))
+    {
+        ui->fontComboBox->setCurrentFont(font);
+    }
+    else
+    {
+        ui->fontComboBox->setCurrentFont(QFont("Segoe UI"));
+    }
+    ui->themeComboBox->setCurrentText(pendingSettings.theme);
+    applySettings();
+
+    qDebug() << "Settings loaded!";
 }

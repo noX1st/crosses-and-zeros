@@ -58,6 +58,9 @@ private:
     void applyFont(const QFont &font);
     void applyTheme();
     void applySettings();
+
+    void saveSettings();
+    void loadSettings();
 };
 
 #endif // MENU_H
